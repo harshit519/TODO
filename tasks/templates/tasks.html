@@ -1,0 +1,102 @@
+{%extends "index.html" %}
+{% block start %}
+
+<form method="post">
+  {%csrf_token%}
+
+  <div class=" container rounded-3 border border-2 border-dark my-5 bg-white" style="height:auto;">
+    <div>
+      <h1 class=" h1">To Do List</h1>
+      <div class="row">
+        <div class=" col-5">
+          <input class=" py-3 form-control shadow" name='task_name' placeholder="input your task" type="text"
+            id="inputText" required>
+        </div>
+        <div class=" col-9 mt-1">
+          <textarea class=" py-3 form-control shadow" name='task_discription' placeholder="input your discription"
+            required></textarea>
+        </div>
+        <div class=" col-3 ">
+          <input class=" py-3 form-control shadow" name='task_status' type="datetime-local" id="inputText" required>
+        </div>
+
+        <div class="col-122">
+
+          <button type="submit" class=" mt-2 btn btn-dark  mt-2"> Add </button>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row rounded bg-white">
+      <div class=" col-12">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">task</th>
+              <th scope="col">Description</th>
+              <th scope="col">Date & time</th>
+              <th scope="col">Actions</th>
+
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for task in Task %}
+            <tr>
+      </div>
+      
+
+      <th scope="row" class="line-through"> <input type="checkbox" class="a"> {{ forloop.counter }}</th>
+      <td class="line-through">{{task.task_name}}</td>
+      <td class="line-through">{{task.task_discription}}</td>
+      <td class="line-through">{{task.task_status}}</td>
+
+      <td>
+        <a href="delete/{{task.id}}" class="btn btn-danger">Delete</a><br>
+        <div class='mb-3'>
+          <a href="update/{{task.id}}" class="btn btn-success mt-2">Update</a>
+        </div>
+      </td>
+      </tr>
+      {% endfor%}
+      </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  </div>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

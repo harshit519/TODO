@@ -1,0 +1,36 @@
+{%extends "index.html" %}
+{% block start %}
+
+<form method="POST">
+  <div class="container rounded-3 border border-2 border-dark my-5 bg-white" style="height:auto;">
+    <div>
+      <h2 class="h2"> Login</h2>
+      {% csrf_token %}
+
+      {% if messages %}
+      <div class="alert alert-primary" role="alert">
+        {% for message in messages%}
+        {{message}}
+        {% endfor %}
+
+      </div>
+      {%endif %}
+
+
+      <div class="row mb-3">
+        <div class=" mb-3">
+          <label for="user" class=" form-control"> User Name</label>
+          <input name='username' type="text" class=" py-3 form-control shadow" id="user">
+        </div>
+        <div class="mb-3">
+          <label for="password" class=" py-3 form-control shadow">Password</label>
+          <input name='password' type="password" class=" py-3 form-control shadow" id="Password">
+        </div>
+        <p>don't have account <a href="/register/">register</a></p>
+        <button type="submit" class="mt-2 btn btn-dark">Submit</button>
+      </div>
+    </div>
+</form>
+
+
+{% endblock %}
